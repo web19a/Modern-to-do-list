@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Todo List</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Modern Todo List ✨</h1>
+        <div class="input-section">
+            <div class="input-group">
+                <input type="text" id="taskInput" placeholder=" ">
+                <label for="taskInput">Task Description</label>
+            </div>
+            <div class="input-group">
+                <select id="prioritySelect">
+                    <option value=""></option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <label for="prioritySelect">Priority</label>
+            </div>
+            <div class="input-group">
+                <input type="date" id="dueDate" placeholder=" ">
+                <label for="dueDate">Due Date</label>
+            </div>
+            <button id="addButton">Add</button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <ul class="todo-list" id="todoList"></ul>
+    </div>
+
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="modal-content">
+            <h3>Are you sure?</h3>
+            <p>This action cannot be undone.</p>
+            <button id="confirmDelete">Yes, Delete</button>
+            <button id="cancelDelete">Cancel</button>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
