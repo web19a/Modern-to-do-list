@@ -120,7 +120,7 @@ function updateProgress() {
 
 function renderTasks() {
     todoList.innerHTML = tasks.map(task => `
-        <li class="todo-item ${task.completed ? 'completed' : ''}" 
+        <li class="todo-item ${task.completed ? 'completed' : ''} priority-${task.priority}" 
             data-id="${task.id}" draggable="true">
             <input type="checkbox" ${task.completed ? 'checked' : ''}>
             <span>${task.text}</span>
