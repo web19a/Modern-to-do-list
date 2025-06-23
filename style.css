@@ -38,13 +38,29 @@ body {
     }
 }
 
-h1 {
+.app-header {
     text-align: center;
-    color: #2c3e50;
     margin-bottom: 2rem;
-    font-size: 2.5rem;
-    font-weight: 700;
+}
+
+.app-header h1 {
+    color: #2c3e50;
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.25rem;
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tagline {
+    display: block;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .input-section {
@@ -125,6 +141,22 @@ h1 {
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
 }
 
+.progress-bar {
+    height: 8px;
+    background: #ecf0f1;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #2ecc71, #3498db);
+    width: 0;
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
 .todo-list {
     list-style: none;
     max-height: 400px;
@@ -143,7 +175,14 @@ h1 {
     transition: all 0.3s ease;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
     cursor: grab;
+    position: relative;
+    overflow: hidden;
+    border-left: 4px solid #ecf0f1;
 }
+
+.todo-item.priority-low { border-left-color: #2ecc71; }
+.todo-item.priority-medium { border-left-color: #f1c40f; }
+.todo-item.priority-high { border-left-color: #e74c3c; }
 
 .todo-item.dragging {
     opacity: 0.5;
@@ -214,6 +253,7 @@ h1 {
     margin-left: 1rem;
     opacity: 0;
     transform: translateX(10px);
+    font-size: 0.9rem;
 }
 
 .todo-item:hover .delete-btn {
@@ -233,25 +273,10 @@ h1 {
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     background: rgba(127, 140, 141, 0.1);
+    white-space: nowrap;
 }
 
-.progress-bar {
-    height: 8px;
-    background: #ecf0f1;
-    border-radius: 4px;
-    margin-bottom: 1.5rem;
-    overflow: hidden;
-}
-
-.progress {
-    height: 100%;
-    background: #3498db;
-    width: 0;
-    transition: width 0.5s ease;
-}
-
-/* Previous CSS remains the same until .confirmation-modal */
-
+/* Confirmation Modal */
 .confirmation-modal {
     position: fixed;
     top: 0;
@@ -265,15 +290,6 @@ h1 {
     z-index: 1000;
     backdrop-filter: blur(5px);
     animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
 
 .modal-content {
@@ -341,4 +357,75 @@ h1 {
     background: #bdc3c7;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(189, 195, 199, 0.3);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+    
+    .app-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .input-section {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .input-group {
+        min-width: 100%;
+    }
+    
+    #addButton {
+        padding: 1rem;
+    }
+    
+    .todo-item {
+        padding: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .todo-item span {
+        flex: 100%;
+        margin-bottom: 0.8rem;
+    }
+    
+    .priority-indicator, 
+    .due-date, 
+    .delete-btn {
+        margin-left: 0;
+        margin-right: 0.8rem;
+    }
+    
+    .delete-btn {
+        opacity: 1;
+        transform: translateX(0);
+        padding: 0.5rem 1rem;
+        margin-left: auto;
+    }
+    
+    .todo-list {
+        max-height: 50vh;
+    }
+}
+
+@media (max-width: 400px) {
+    .app-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .tagline {
+        font-size: 0.9rem;
+    }
+    
+    .todo-item input[type="checkbox"] {
+        margin-right: 0.8rem;
+    }
+    
+    .due-date {
+        font-size: 0.8rem;
+    }
 }
